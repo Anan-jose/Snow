@@ -318,6 +318,29 @@
 
   <script>
 
+    if (window.innerWidth < 768) {
+      document.body.innerHTML = `
+        <div style="
+          min-height:100vh;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          text-align:center;
+          padding:20px;
+          font-family:Poppins, sans-serif;
+          background:#111;
+          color:#fff;
+        ">
+          <div>
+            <h1>💻 Desktop Only</h1>
+            <p>This page is made to be opened on a laptop or desktop.</p>
+            <p>Please open it on a bigger screen ❤️</p>
+          </div>
+        </div>
+      `;
+      throw new Error("Mobile blocked");
+    }
+
     const noBtn = document.getElementById("no");
 
     const yesBtn = document.getElementById("yes");
@@ -429,15 +452,4 @@
 
       document.body.appendChild(heart);
 
-      setTimeout(() => heart.remove(), 8000);
-
-    }
-
-    setInterval(createHeart, 380);
-
-  </script>
-
-</body>
-
-</html>
-  
+      setTimeout(() => heart.remove(),
